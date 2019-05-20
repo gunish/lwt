@@ -5,7 +5,5 @@ public with sharing class Test {
 
         string c = a + '' + b;
         return c;
-
-        //sfdx source deploy
     }
 }
