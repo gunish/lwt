@@ -1,0 +1,22 @@
+sudo: true
+os: trusty
+cache: false
+env:
+- URL=https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+before_install:
+- export SFDX_AUTOUPDATE_DISABLE=false
+- export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
+- export SFDX_DOMAIN_RETRY=300
+- export SFDX_DISABLE_APP_HUB=true
+- export SFDX_LOG_LEVEL=DEBUG
+- mkdir sfdx
+- wget -qO- $URL | tar xJ -C sfdx --strip-components 1
+- "./sfdx/install"
+- export PATH=./sfdx/$(pwd):$PATH
+- sfdx --version
+- sfdx plugins --core
+- sfdx force:auth:jwt:grant --clientid $LWT_CONSUMERKEY --jwtkeyfile assets/server.key
+  --username $LWT_USERNAME --setdefaultdevhubusername -a HubOrg
+script:
+- sfdx force:source:deploy -x ./manifest/package.xml
+- sfdx force:apex:test:run -u $LWT_USERNAME --wait 10
