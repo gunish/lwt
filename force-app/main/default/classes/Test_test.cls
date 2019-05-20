@@ -1,8 +1,8 @@
 @isTest
 private class Test_test {
-    public Test_test() {
+    @isTest
+    static void Test_test() {
         Test testClass = new Test();
-        string result = testClass.Test();
-        system.assertEquals(result,'helloworld');
+        system.assertEquals(testClass.Test(),'Hello World');
     }
 }

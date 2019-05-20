@@ -1,9 +1,12 @@
 public with sharing class Test {
-    public string Test() {
-        string a = 'hello';
-        string b = 'world';
+    // constructor
+    public Test() {
 
-        string c = a + '' + b;
-        return c;
+    }
+
+    // basic method
+    public string Test() {
+        // do some calculations
+        return 'Hello World';
     }
 }
