@@ -26,6 +26,9 @@ before_install:
 
 install:
   - git fetch --depth=10000 --tags
+  - git checkout release
+  - git checkout develop
+
 
 script:
 - sfdxgp origin/develop origin/release ./manifest/
