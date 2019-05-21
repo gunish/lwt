@@ -26,8 +26,8 @@ before_install:
 
 install:
   - git fetch --depth=10000 --tags
-  - git checkout release
-  - git checkout develop
+  - git checkout -t -b release origin/release
+  - git checkout -t -b develop origin/develop
 
 
 script:
