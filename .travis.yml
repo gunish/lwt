@@ -8,9 +8,6 @@ env:
 - URL=https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
 
 before_install:
-- git checkout release
-- git checkout develop
-
 - export SFDX_AUTOUPDATE_DISABLE=false
 - export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
 - export SFDX_DOMAIN_RETRY=300
@@ -28,7 +25,9 @@ before_install:
 - cd sfdx-gen-pack
 - npm link
 - cd ..
-
+- git checkout release
+- git checkout develop
+- pwd
 script:
 - sfdxgp origin/develop origin/release ./manifest/
 - sfdx force:source:deploy -u $LWT_USERNAME -x ./manifest/package.xml -w 5
