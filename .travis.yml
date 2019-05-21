@@ -24,6 +24,9 @@ before_install:
 - npm link
 - cd ..
 
+install:
+  - git fetch --unshallow --tags
+
 script:
 - sfdxgp develop release ./manifest/
 - sfdx force:source:deploy -u $LWT_USERNAME -x ./manifest/package.xml -w 5
