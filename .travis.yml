@@ -19,6 +19,10 @@ before_install:
 - sfdx plugins --core
 - sfdx force:auth:jwt:grant --clientid $LWT_CONSUMERKEY --jwtkeyfile assets/server.key
   --username $LWT_USERNAME --setdefaultdevhubusername -a HubOrg
+- git clone https://github.com/cloudsandbox/sfdx-gen-pack.git
+- cd sfdx-gen-pack
+- npm link
+
 script:
 - sfdx force:source:deploy -u $LWT_USERNAME -x ./manifest/package.xml -w 5
 - sfdx force:apex:test:run -u $LWT_USERNAME --wait 10
