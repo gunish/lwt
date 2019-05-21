@@ -1,11 +1,16 @@
 sudo: true
 os: trusty
 cache: false
+git:
+  depth: false
+
 env:
 - URL=https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+
 before_install:
-- openssl aes-256-cbc -K $encrypted_38bcd18e689e_key -iv $encrypted_38bcd18e689e_iv
-  -in assets/server.key.enc -out assets/server.key -d
+- git checkout release
+- git checkout develop
+
 - export SFDX_AUTOUPDATE_DISABLE=false
 - export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
 - export SFDX_DOMAIN_RETRY=300
@@ -23,14 +28,6 @@ before_install:
 - cd sfdx-gen-pack
 - npm link
 - cd ..
-
-install:
-  - git clone https://github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
-  - cd $TRAVIS_REPO_SLUG
-  - git checkout -qf $TRAVIS_COMMIT
-  - git checkout -t -b release origin/release
-  - git checkout -t -b develop origin/develop
-
 
 script:
 - sfdxgp origin/develop origin/release ./manifest/
