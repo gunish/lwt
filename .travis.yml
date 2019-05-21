@@ -25,7 +25,7 @@ before_install:
 - cd ..
 
 install:
-  - git fetch --unshallow --tags
+  - git fetch --depth=10000 --tags
 
 script:
 - sfdxgp develop release ./manifest/
