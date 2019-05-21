@@ -6,6 +6,6 @@ private class Test_test {
         system.assertEquals(testClass.Test(),'Hello World');
         
         // Adding a test that will fail.
-        //system.assert(false);
+        system.assert(false);
     }
 }

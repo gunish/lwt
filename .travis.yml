@@ -31,6 +31,6 @@ before_install:
 - git checkout develop
 - pwd
 script:
-- sfdxgp origin/develop origin/release ./manifest/
+- sfdxgp develop release ./manifest/
 - sfdx force:source:deploy -u $LWT_USERNAME -x ./manifest/package.xml -w 5
 - sfdx force:apex:test:run -u $LWT_USERNAME --wait 10
