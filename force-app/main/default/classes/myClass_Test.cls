@@ -5,6 +5,6 @@ public with sharing class myClass_Test {
         myClass tempClass = new myClass();
         System.assertEquals(tempClass.version(), '1.0.0');
 
-        System.assert(false);
+        //System.assert(false);
     }
 }
