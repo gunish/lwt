@@ -28,6 +28,6 @@ install:
   - git fetch --depth=10000 --tags
 
 script:
-- sfdxgp develop release ./manifest/
+- sfdxgp origin/develop origin/release ./manifest/
 - sfdx force:source:deploy -u $LWT_USERNAME -x ./manifest/package.xml -w 5
 - sfdx force:apex:test:run -u $LWT_USERNAME --wait 10
