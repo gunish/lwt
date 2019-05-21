@@ -22,6 +22,7 @@ before_install:
 - git clone https://github.com/cloudsandbox/sfdx-gen-pack.git
 - cd sfdx-gen-pack
 - npm link
+- cd ..
 
 script:
 - sfdx force:source:deploy -u $LWT_USERNAME -x ./manifest/package.xml -w 5
