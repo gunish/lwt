@@ -4,6 +4,6 @@ public with sharing class myClass {
     }
 
     public string version(){
-            return '1.0.1';
+            return '1.0.0';
     }
 }
